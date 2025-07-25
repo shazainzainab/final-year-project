@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Header Page</title>
+  <link rel="stylesheet" href="recommendation form.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-container">
+    <a href="#" class="logo">
+      <img src="image/ViaItalia teal + blue combo logo.png" alt="ViaItalia logo">
+    </a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#" class="active">For You</a></li>
+        <li><a href="#">Beaches</a></li>
+        <li><a href="#">Hotels</a></li>
+        <li><a href="#">Rivers</a></li>
+        <li><a href="#">Lakes</a></li>
+        <li><a href="#">Resturants</a></li>
+      </ul>
+    </nav>
+    <a href="Sign in.html" class="signin-btn">Sign in</a>
+  </div>
+</header>
+<main id="main-content">
+  <div class="container">
+    <form class="trip-form">
+      <div class="form-intro">
+        <h1 class="form-main-title">Provide us your Trip preferences</h1>
+        <p class="form-subtitle">Give some Specific information about your Trip, Our Travel Planner will Generate a customized Plan according to your Preferences.</p>
+      </div>
+
+      <fieldset class="form-group">
+  <legend class="form-group-title">What is your Destination?</legend>
+  <div class="input-wrapper">
+    <input type="text" class="form-input" placeholder="Pisa, Italy" id="destination-input" readonly>
+    <img src="image/angle-down.png" alt="Arrow Icon" class="dropdown-icon" id="dropdown-arrow">
+    <ul class="dropdown-list" id="destination-list">
+      <li>Pisa, Italy</li>
+      <li>Lecce, Italy</li>
+      <li>Como, Italy</li>
+      <li>Rome, Italy</li>
+    </ul>
+  </div>
+</fieldset>
+
+    <fieldset class="form-group">
+  <legend class="form-group-title">Select your trip date here.</legend>
+  <div class="input-wrapper">
+    <input type="date" id="date-picker" class="form-input real-date-picker">
+  </div>
+</fieldset>
+
+      <fieldset class="form-group">
+        <legend class="form-group-title">How many days you are plan to travel?</legend>
+        <div class="days-counter">
+          <span class="days-label">Days</span>
+          <div class="counter-controls">
+            <button type="button" aria-label="Decrease days">
+              <img src="image/minus.png" alt="minus icon">
+            </button>
+            <span class="counter-value">5</span>
+            <button type="button" aria-label="Increase days">
+              <img src="image/plus.png" alt="plus icon">
+            </button>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="form-group">
+        <legend class="form-group-title">Tell us your travel Budget?</legend>
+        <p class="form-group-subtitle">What’s your budget for your trip select.</p>
+        <div class="options-grid budget-grid">
+          <label class="choice-card">
+            <input type="radio" name="budget" class="visually-hidden">
+            <div class="card-content">
+              <img src="image/money.png" alt="money icon">
+              <span class="card-title">Low</span>
+              <span class="card-description">0-2000 USD</span>
+            </div>
+          </label>
+          <label class="choice-card">
+            <input type="radio" name="budget" class="visually-hidden">
+            <div class="card-content">
+              <img src="image/money.png" alt="money icon">
+              <span class="card-title">Medium</span>
+              <span class="card-description">2000-3000 USD</span>
+            </div>
+          </label>
+          <label class="choice-card">
+            <input type="radio" name="budget" class="visually-hidden">
+            <div class="card-content">
+              <img src="image/money.png" alt="money icon">
+              <span class="card-title">High</span>
+              <span class="card-description">#000+ USD</span>
+            </div>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset class="form-group">
+        <legend class="form-group-title">With whom you plan to Travel?</legend>
+        <div class="options-grid companion-grid">
+          <label class="choice-card">
+            <input type="radio" name="companion" class="visually-hidden">
+            <div class="card-content">
+              <img src="image/travel.png" alt="solo traveler icon">
+              <span class="card-title">Solo</span>
+            </div>
+          </label>
+          <label class="choice-card">
+            <input type="radio" name="companion" class="visually-hidden">
+            <div class="card-content">
+              <img src="image/couple.png" alt="couple icon">
+              <span class="card-title">Couple</span>
+            </div>
+          </label>
+          <label class="choice-card">
+            <input type="radio" name="companion" class="visually-hidden">
+            <div class="card-content">
+              <img src="image/family.png" alt="family icon">
+              <span class="card-title">Family</span>
+            </div>
+          </label>
+          <label class="choice-card">
+            <input type="radio" name="companion" class="visually-hidden">
+            <div class="card-content">
+              <img src="image/support.png" alt="friends icon">
+              <span class="card-title">Friends</span>
+            </div>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset class="form-group">
+        <legend class="form-group-title">Which activities you are looking for?</legend>
+        <div class="options-grid activity-grid">
+          <label class="choice-card activity-card">
+            <input type="checkbox" name="activity" class="visually-hidden">
+            <div class="card-content">
+              <img src="image/sunset.png" alt="city icon">
+              <span class="card-title-bold">Beaches</span>
+            </div>
+          </label>
+          <label class="choice-card activity-card">
+            <input type="checkbox" name="activity" class="visually-hidden">
+            <div class="card-content">
+              <img src="image/fireworks.png" alt="city icon">
+              <span class="card-title-bold">City Views</span>
+            </div>
+          </label>
+          <label class="choice-card activity-card">
+            <input type="checkbox" name="activity" class="visually-hidden">
+            <div class="card-content">
+              <img src="image/chairs.png" alt="city icon">
+              <span class="card-title-bold">Outdoor Plan</span>
+            </div>
+          </label>
+          <label class="choice-card activity-card">
+            <input type="checkbox" name="activity" class="visually-hidden">
+            <div class="card-content">
+              <img src="image/event.png" alt="festival icon">
+              <span class="card-title-bold">Events</span>
+            </div>
+          </label>
+          <label class="choice-card activity-card">
+            <input type="checkbox" name="activity" class="visually-hidden">
+            <div class="card-content">
+              <img src="image/creek.png" alt="river icon">
+              <span class="card-title-bold">River</span>
+            </div>
+          </label>
+          <label class="choice-card activity-card">
+            <input type="checkbox" name="activity" class="visually-hidden">
+            <div class="card-content">
+              <img src="image/street-food.png" alt="food icon">
+              <span class="card-title-bold">Food Street</span>
+            </div>
+          </label>
+          <label class="choice-card activity-card">
+            <input type="checkbox" name="activity" class="visually-hidden">
+            <div class="card-content">
+              <img src="image/shopping-center.png" alt="shopping bag icon">
+              <span class="card-title-bold">Shopping mall</span>
+            </div>
+          </label>
+          <label class="choice-card activity-card">
+            <input type="checkbox" name="activity" class="visually-hidden">
+            <div class="card-content">
+              <img src="image/night-club.png" alt="nightlife icon">
+              <span class="card-title-bold">Night Life</span>
+            </div>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset class="form-group">
+        <legend class="form-group-title">Select according to your wish.</legend>
+        <div class="radio-group">
+          <label class="radio-item">
+            <span class="radio-label">Halal</span>
+            <input type="radio" name="food" class="visually-hidden" checked>
+            <img src="image/select task.png" alt="radio selected" class="radio-icon-checked">
+            <img src="image/task.png" alt="radio unselected" class="radio-icon-unchecked">
+          </label>
+          <label class="radio-item">
+            <span class="radio-label">Vegetarian</span>
+            <input type="radio" name="food" class="visually-hidden">
+            <img src="image/select task.png" alt="radio selected" class="radio-icon-checked">
+            <img src="image/task.png" alt="radio unselected" class="radio-icon-unchecked">
+          </label>
+          <label class="radio-item">
+            <span class="radio-label">Non- Vegetarian</span>
+            <input type="radio" name="food" class="visually-hidden">
+            <img src="image/select task.png" alt="radio selected" class="radio-icon-checked">
+            <img src="image/task.png" alt="radio unselected" class="radio-icon-unchecked">
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset class="form-group">
+        <legend class="form-group-title">Would you like to provide some more preferences?</legend>
+        <textarea class="form-textarea" placeholder="Write here.........."></textarea>
+      </fieldset>
+
+      <div class="submit-container">
+        <button type="submit" class="submit-btn">Submitted</button>
+      </div>
+    </form>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="container footer-container">
+    <a href="#" class="logo">
+      <img src="image/ViaItalia logo in white.png" alt="ViaItalia white logo">
+    </a>
+    <nav class="footer-nav">
+      <ul>
+        <li><a href="#">Contact us</a></li>
+        <li><a href="#">About us</a></li>
+        <li><a href="#">Term&condition</a></li>
+        <li><a href="#">Privacy policy</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+</header>
+
+<script src="recommendation form.js"></script>
+</body>
+</html>

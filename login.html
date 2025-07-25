@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Fixed Login Page - Equal Spacing & Center Button</title>
+<link rel="stylesheet" href="Login.css">
+</head>
+<body>
+
+<img class="background-image" src="image/login page background.jpg" alt="Background"/>
+
+<!-- Header -->
+<header>
+  <div class="header-left">
+    <img src="image/home-agreement.png"
+           class="logo" alt="Logo">
+    <a class="home-text" href="#">Home</a>
+  </div>
+  <div class="signin-box">
+    <button class="signin-button">Sign In</button>
+  </div>
+</header>
+
+<section class="login-section">
+  <h2>Provide Information for Log in.</h2>
+  
+  <div class="form-group name-fields">
+    <div class="input-wrapper"><input type="text" placeholder="First Name"></div>
+    <div class="input-wrapper"><input type="text" placeholder="Last Name"></div>
+  </div>
+
+  <div class="form-group">
+    <div class="input-wrapper"><input type="email" placeholder="Enter your email address"></div>
+  </div>
+
+  <div class="form-group">
+    <div class="input-wrapper"><input type="password" placeholder="Enter your Password"></div>
+  </div>
+
+  <div class="form-group">
+    <div class="input-wrapper"><input type="password" placeholder="Confirm your Password"></div>
+  </div>
+
+  <button class="submit-button" id="loginBtn"><span>Log in</span></button>
+
+  <p class="bottom-text">If you already have an account please <button id="signInBtn">Sign In</button>.</p>
+</section>
+
+<script src="Login.js"></script>
+
+</body>
+</html>

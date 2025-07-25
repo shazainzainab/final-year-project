@@ -1,0 +1,479 @@
+:root {
+  --font-inter: 'Inter', sans-serif;
+  --font-konkhmer: 'Konkhmer Sleokchher', cursive;
+  --font-kameron: 'Kameron', serif;
+  --font-kdam-thmor: 'Kdam Thmor Pro', sans-serif;
+  --font-lato: 'Lato', sans-serif;
+  --font-istok-web: 'Istok Web', sans-serif;
+  --font-jost: 'Jost', sans-serif;
+  --font-kokoro: 'serif'; /* Fallback for Kokoro */
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-inter);
+  background-color: #d2c9b5;
+  color: #000000;
+  overflow-x: hidden;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+h1, h2, h3, p {
+  margin: 0;
+}
+
+/* CSS from section:header */
+.hero-section {
+  position: relative;
+  height: 631px;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  border-radius: 0 0 30px 30px;
+  overflow: hidden;
+}
+.hero-background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.top-bar {
+  position: absolute;
+  top: 2px; /* y=84 - root y=82 */
+  width: 100%;
+  background-color: rgba(250, 248, 242, 0.6);
+  padding: 10px 0;
+}
+.top-bar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.top-bar-left, .top-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.top-bar-left .icon {
+  width: 48px;
+  height: 48px;
+}
+.view-online-btn {
+  background-color: #a0c5e8;
+  color: #000000;
+  padding: 8px 32px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-family: var(--font-inter);
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 45px;
+}
+.top-bar-right {
+  gap: 20px;
+}
+.top-bar-right .icon {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+.hero-text-container {
+  position: absolute;
+  bottom: 40px; /* distance from bottom */
+  left: 40px; /* distance from left */
+  padding-bottom: 0;
+}
+.hero-title {
+  font-family: var(--font-konkhmer);
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.4;
+  margin: 0 0 10px 0;
+  max-width: 850px;
+}
+.hero-date {
+  font-family: var(--font-konkhmer);
+  font-size: 24px;
+  font-weight: 400;
+  margin: 0;
+}
+/* Icon Common Style */
+.icon {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.icon:hover {
+  transform: scale(1.2);
+}
+
+/* Individual Icon Colors (optional) */
+.bookmark-icon { filter: hue-rotate(30deg); }
+.copy-icon { filter: hue-rotate(90deg); }
+.save-icon { filter: hue-rotate(180deg); }
+.share-icon { filter: hue-rotate(270deg); }
+@media (max-width: 768px) {
+  .hero-section { height: 50vh; min-height: 400px; }
+  .hero-title { font-size: 28px; }
+  .hero-date { font-size: 18px; }
+  .view-online-btn { font-size: 18px; padding: 6px 16px; }
+  .top-bar-right { display: none; }
+  .top-bar-left .icon { display: none; }
+  .top-bar-container { justify-content: center; }
+}
+@media (max-width: 768px) {
+  .hero-text-container {
+    bottom: 20px;
+    left: 20px;
+  }
+}
+
+/* CSS from section:map */
+.map-section {
+  line-height: 0; /* remove bottom space from image */
+}
+.map-section iframe, .map-section img {
+  width: 100%;
+  border-radius: 20px;
+  margin-bottom: 5px;
+}
+
+/* CSS from section:overview */
+.overview-section {
+  background-color: #fefefe;
+  padding: 60px 0;
+}
+.overview-header {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #033463;
+  color: #ffffff;
+  padding: 8px 24px;
+  border-radius: 50px;
+  margin-bottom: 40px;
+}
+.overview-header img {
+  width: 37px;
+  height: 44px;
+}
+.overview-header span {
+  font-family: var(--font-kokoro, 'Kameron', serif);
+  font-size: 24px;
+}
+.overview-content h2 {
+  font-family: var(--font-kameron);
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.overview-content .history-title {
+  margin-top: 40px;
+}
+.overview-content p {
+  font-family: var(--font-kdam-thmor);
+  font-size: 32px;
+  line-height: 1.6;
+  max-width: 1380px;
+}
+@media (max-width: 768px) {
+  .overview-content h2 { font-size: 28px; }
+  .overview-content p { font-size: 18px; }
+}
+
+/* CSS from section:hotels */
+.hotels-section {
+  background-color: #fdfafa;
+  padding: 60px 0;
+}
+.hotels-section .section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.hotels-title {
+  font-family: var(--font-kameron);
+  font-size: 32px;
+  font-weight: 700;
+}
+.hotels-subtitle {
+  font-family: var(--font-kdam-thmor);
+  font-size: 24px;
+  margin-top: 5px;
+  color: #333;
+}
+.carousel-nav {
+  display: flex;
+  gap: 10px;
+}
+.carousel-nav img {
+  cursor: pointer;
+  width: 48px;
+  height: 48px;
+}
+.divider {
+  border: 0;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.42);
+  margin-bottom: 40px;
+}
+.hotel-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+}
+.hotel-card img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  border-radius: 25px;
+  margin-bottom: 16px;
+}
+.hotel-card h3 {
+  font-family: var(--font-lato);
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.hotel-card .location {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-kdam-thmor);
+  font-size: 20px;
+}
+.hotel-card .location img {
+  width: 34px;
+  height: 36px;
+  margin: 0;
+  border-radius: 0;
+}
+
+/* CSS from section:itinerary-day1 */
+.itinerary-section {
+  background-color: #fcf9f9;
+  padding: 60px 0;
+}
+.itinerary-header {
+  display: flex;
+  flex-direction: column; /* Yeh line add karo */
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+.itinerary-title {
+  font-family: var(--font-istok-web);
+  font-size: 40px;
+  font-weight: 700;
+}
+.day-selector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-istok-web);
+  font-size: 32px;
+}
+.find-stay-bar {
+  background-color: #7fb6c7d8;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 24px;
+  margin-bottom: 50px;
+}
+.find-stay-bar span {
+  font-family: var(--font-istok-web);
+  font-size: 24px;
+}
+
+/* Small size for day-selector arrow */
+.itinerary-header .day-selector img {
+  width: 24px;
+  height: 24px;
+}
+
+/* Small size for map icon in find-stay-bar */
+.find-stay-bar img {
+  width: 28px;
+  height: 28px;
+}
+
+.attractions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+.attraction-card {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #41a0ee80;
+  border-radius: 30px;
+  padding: 24px;
+}
+.number-icon {
+  position: absolute;
+  left: -10px;
+  top: -14px;
+  width: 42px;
+  height: 42px;
+}
+.attraction-details {
+  flex-grow: 1;
+}
+.attraction-details h3 {
+  font-family: var(--font-istok-web);
+  font-size: 36px;
+  margin-bottom: 8px;
+}
+.attraction-details p {
+  font-family: var(--font-istok-web);
+  font-size: 24px;
+  margin-bottom: 24px;
+}
+.attraction-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-istok-web);
+  font-size: 24px;
+}
+.attraction-meta img {
+  width: 24px;
+  height: 24px;
+}
+.attraction-image {
+  width: 249px;
+  height: 166px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-left: 24px;
+}
+@media (max-width: 768px) {
+  .attraction-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+  .number-icon {
+    top: -15px;
+    left: -5px;
+  }
+  .attraction-image {
+    width: 100%;
+    height: 180px;
+    margin-top: 20px;
+    margin-left: 0;
+  }
+  .attraction-details h3 { font-size: 24px; }
+  .attraction-details p, .attraction-meta { font-size: 16px; }
+}
+
+/* CSS from section:itinerary-day2 */
+/* Styles for this section are inherited from the .itinerary-section class defined in the previous block. */
+
+/* CSS from section:costs */
+.costs-section {
+  background-color: #ffffff;
+  padding: 60px 0 100px 0;
+}
+.costs-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+.costs-header img {
+  width: 52px;
+  height: 52px;
+}
+.costs-header h2 {
+  font-family: var(--font-istok-web);
+  font-size: 48px;
+  font-weight: 700;
+}
+.costs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+.category-header img {
+  width: 50px;
+  height: 50px;
+}
+.category-header h3 {
+  font-family: var(--font-istok-web);
+  font-size: 32px;
+  font-weight: 700;
+}
+.category-items {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, auto);
+  grid-auto-flow: column;
+  gap: 30px 100px;
+  padding-left: 66px;
+}
+.cost-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.cost-item span {
+  font-family: var(--font-jost);
+  font-size: 24px;
+  font-weight: 400;
+}
+.cost-item strong {
+  font-family: var(--font-jost);
+  font-size: 24px;
+  font-weight: 600;
+}
+@media (max-width: 768px) {
+  .costs-header h2 { font-size: 32px; }
+  .category-header h3 { font-size: 24px; }
+  .category-items {
+    grid-template-columns: 1fr;
+    grid-auto-flow: row;
+    padding-left: 0;
+    gap: 20px;
+  }
+  .cost-item span, .cost-item strong { font-size: 18px; }
+}
