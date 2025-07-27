@@ -1,0 +1,32 @@
+{
+  "name": "travel-recommendation-app",
+  "version": "1.0.0",
+  "description": "A full-stack travel recommendation web application",
+  "main": "index.js",
+  "scripts": {
+    "install-all": "cd backend && npm install && cd ../frontend && npm install",
+    "backend": "cd backend && npm run dev",
+    "frontend": "cd frontend && npm start",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "build": "cd frontend && npm run build",
+    "seed": "curl -X POST http://localhost:5000/api/seed"
+  },
+  "keywords": [
+    "travel",
+    "recommendation",
+    "react",
+    "nodejs",
+    "express",
+    "mongodb",
+    "fullstack"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  }
+}
