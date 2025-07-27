@@ -6,7 +6,7 @@ const rateLimit = require('express-rate-limit');
 require('dotenv').config();
 
 // Import configurations and routes
-const { connectDB, closeDB } = require('./config/database');
+const { connectDB, closeDB } = require('./config/db');
 const recommendationRoutes = require('./routes/recommendationRoutes');
 const { errorHandler, notFoundHandler } = require('./middleware/errorHandler');
 
@@ -19,17 +19,25 @@ app.use(helmet({
 }));
 
 // CORS configuration
+const allowedOrigins = ['http://localhost:3000', 'http://127.0.0.1:5500'];
+
 app.use(cors({
-    origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 // Rate limiting
 const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 100, // limit each IP to 100 requests per windowMs
+    windowMs: 15 * 60 * 1000,
+    max: 100,
     message: {
         success: false,
         message: 'Too many requests from this IP, please try again later.',
@@ -42,13 +50,9 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // Logging middleware
-if (process.env.NODE_ENV === 'development') {
-    app.use(morgan('dev'));
-} else {
-    app.use(morgan('combined'));
-}
+app.use(morgan(process.env.NODE_ENV === 'development' ? 'dev' : 'combined'));
 
-// Static files (if you want to serve frontend from same server)
+// Static files
 app.use(express.static('public'));
 
 // API Routes
@@ -73,66 +77,64 @@ app.get('/', (req, res) => {
     });
 });
 
-// Error handling middleware (must be last)
+// Error handlers
 app.use(notFoundHandler);
 app.use(errorHandler);
+
+// Global server reference for shutdown
+let server;
 
 // Graceful shutdown
 const gracefulShutdown = async (signal) => {
     console.log(`\n🔄 Received ${signal}. Starting graceful shutdown...`);
-    
-    server.close(async () => {
-        console.log('📴 HTTP server closed');
-        
-        // Close database connection
-        await closeDB();
-        
-        console.log('✅ Graceful shutdown completed');
-        process.exit(0);
-    });
-    
-    // Force close after 30 seconds
-    setTimeout(() => {
-        console.error('⚠️ Could not close connections in time, forcefully shutting down');
-        process.exit(1);
-    }, 30000);
+
+    if (server) {
+        server.close(async () => {
+            console.log('📴 HTTP server closed');
+
+            // Close database connection
+            await closeDB();
+
+            console.log('✅ Graceful shutdown completed');
+            process.exit(0);
+        });
+
+        // Force exit after 30s
+        setTimeout(() => {
+            console.error('⚠️ Forcefully shutting down...');
+            process.exit(1);
+        }, 30000);
+    }
 };
 
 // Start server
 const startServer = async () => {
     try {
-        // Connect to database
         await connectDB();
-        
-        // Start HTTP server
-        const server = app.listen(PORT, () => {
+        server = app.listen(PORT, () => {
             console.log('🚀 ViaItalia Backend Server Started Successfully!');
             console.log(`📍 Server running on: http://localhost:${PORT}`);
             console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
             console.log(`📊 API Base URL: http://localhost:${PORT}/api/v1`);
             console.log('📘 API Endpoints:');
-            console.log('   GET  /api/v1/health - Health check');
-            console.log('   GET  /api/v1/destinations - Get all destinations');
-            console.log('   POST /api/v1/recommend - Generate travel recommendation');
-            console.log('   GET  /api/v1/cities/:cityName - Get city details');
-            console.log('   GET  /api/v1/hotels - Get hotels by city and budget');
-            console.log('   GET  /api/v1/attractions/:cityName - Get attractions');
-            console.log('   GET  /api/v1/restaurants/:cityName - Get restaurants');
+            console.log('   GET  /api/v1/health');
+            console.log('   GET  /api/v1/destinations');
+            console.log('   POST /api/v1/recommend');
+            console.log('   GET  /api/v1/cities/:cityName');
+            console.log('   GET  /api/v1/hotels');
+            console.log('   GET  /api/v1/attractions/:cityName');
+            console.log('   GET  /api/v1/restaurants/:cityName');
             console.log('✨ Ready to serve travel recommendations!');
         });
 
-        // Handle graceful shutdown
         process.on('SIGTERM', () => gracefulShutdown('SIGTERM'));
         process.on('SIGINT', () => gracefulShutdown('SIGINT'));
-        
-        return server;
     } catch (error) {
         console.error('❌ Failed to start server:', error.message);
         process.exit(1);
     }
 };
 
-// Start the server
 startServer();
 
 module.exports = app;
